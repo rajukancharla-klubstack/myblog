@@ -12,18 +12,24 @@
 
     @forelse($posts as $post)
     <div class="card mb-3">
-        <img src="{{ $post->image }}" class="card-img-top" alt="Post Image">
+        <img src="{{ $post->image }}" class="card-img-top" alt="Post Image" style="max-width: 1080px; max-height: 1080px;">
         <div class="card-body">
             <h5 class="card-title">{{ $post->title }}</h5>
             <p class="card-text">{{ $post->content }}</p>
             <p class="card-text">Author: {{ $post->user->name }}</p>
 
-            {{-- Add buttons or forms for interaction (e.g., comments and likes) --}}
+            {{-- Display likes count --}}
+            <p class="card-text">Likes: {{ $post->likes->count() }}</p>
+
             <div class="row">
                 <div class="col-md-6">
                     <form method="post" action="{{ route('comments.store') }}">
                         @csrf
-                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                        <div class="form-group">
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                            <label for="comment_content">Add a Comment:</label>
+                            <textarea class="form-control" id="comment_content" name="content" rows="3" required></textarea>
+                        </div>
                         <button type="submit" class="btn btn-primary">Comment</button>
                     </form>
                 </div>
