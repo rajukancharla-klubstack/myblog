@@ -13,7 +13,7 @@
 </ul>
 @else
 <div class="alert alert-info" role="alert">
-    No users found.
+    No users found to show.
 </div>
 @endif
 @endsection

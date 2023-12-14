@@ -3,8 +3,6 @@
 @section('content')
 <h1>Edit User</h1>
 
-@include('partials.errors')
-
 <form action="{{ route('users.update', $user->id) }}" method="post">
     @csrf
     @method('PUT')

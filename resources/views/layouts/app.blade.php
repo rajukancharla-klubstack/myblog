@@ -41,7 +41,7 @@
 <body>
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-        <a class="navbar-brand" href="{{ url('/') }}">Your App</a>
+        <a class="navbar-brand" href="{{ url('/') }}">My Blog App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -52,9 +52,29 @@
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('users.index') }}">Users</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users.create') }}">Create User</a>
 
+                </li>
+                @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users.login.form') }}">Login</a>
+                </li>
+                @endguest
+
+                @auth
+                <li class="nav-item">
+                    <form method="post" action="{{ route('users.logout') }}">
+                        @csrf
+                        <button type="submit" class="nav-link btn btn-link">Logout</button>
+                    </form>
+                </li>
+                @endauth
             </ul>
         </div>
     </nav>

@@ -2,15 +2,11 @@
 
 @section('content')
 <div class="container">
-    <h1>Create User</h1>
+    <h1>Login</h1>
 
-    <form id="user-create-form" action="{{ route('users.store') }}" method="post">
+
+    <form method="post" action="{{ route('users.login') }}">
         @csrf
-
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
-        </div>
 
         <div class="form-group">
             <label for="email">Email:</label>
@@ -22,7 +18,7 @@
             <input type="password" class="form-control" id="password" name="password" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Create User</button>
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
 </div>
 @endsection
