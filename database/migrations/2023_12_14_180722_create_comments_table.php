@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained(); // Add this line for relationship with User model
+            $table->foreignId('post_id')->constrained(); // Add this line for relationship with Post model
+            $table->text('content');
             $table->timestamps();
         });
     }
