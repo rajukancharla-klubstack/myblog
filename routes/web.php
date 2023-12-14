@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,4 +35,10 @@ Route::get('/login', [UserController::class, 'loginForm'])->name('login');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Comment routes
+    Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
+    // Like routes
+    Route::post('/likes', [LikeController::class, 'store'])->name('likes.store');
 });
